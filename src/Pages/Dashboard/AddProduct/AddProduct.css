@@ -1,0 +1,32 @@
+.add-service {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 3px #e0dddd;
+  width: 40%;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  background-color: rgb(144, 221, 231);
+  /* width: 40%;
+    background-color: wheat; */
+}
+.add-service input,
+textarea {
+  width: 80%;
+  margin: 8px;
+  color: red;
+}
+.add-service button {
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
+.input-portion {
+  margin-bottom: 30px;
+  margin-top: 20px;
+}
+@media screen and (max-width: 480px) {
+  .add-service {
+    width: 90%;
+    margin: auto;
+  }
+}
