@@ -26,11 +26,12 @@ import Review from '../Review/Review';
 import Payment from '../Payment/Payment';
 import MyOrder from '../MyOrder/MyOrder';
 import useAuth from '../../../hooks/useAuth';
+import AdminRoute from '../../Login/AdminRoute/AdminRoute';
 
 const drawerWidth = 240;
 
 function Dashboard(props) {
-  const {logout} = useAuth();
+  const {logout, admin} = useAuth();
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   let { path, url } = useRouteMatch();
@@ -44,20 +45,23 @@ function Dashboard(props) {
       <Link style={{textDecoration: 'none', color: 'Black'}} to='/home'><Button >Home</Button></Link>
       <Divider />
       <br />
-      <Link style={{textDecoration: 'none', color: 'Black'}} to={`${url}/makeAdmin`}><Button >Make Admin</Button></Link>
+      {admin && <Box>
+        <Link style={{textDecoration: 'none', color: 'Black'}} to={`${url}/makeAdmin`}><Button >Make Admin</Button></Link>
       <Divider />
       <Link style={{textDecoration: 'none', color: 'Black'}} to={`${url}/manageProducts`}><Button >Manage Products</Button></Link>
       <Divider />
       <Link style={{textDecoration: 'none', color: 'Black'}} to={`${url}/addProduct`}><Button >Add Product</Button></Link>
       <Divider />
       <Link style={{textDecoration: 'none', color: 'Black'}} to={`${url}/manageOrder`}><Button >Manage Order</Button></Link>
-      <Divider />
-      <Link style={{textDecoration: 'none', color: 'Black'}} to={`${url}/myOrder`}><Button >MMy Order</Button></Link>
+      <Divider /></Box> ||
+      <Box>
+        <Link style={{textDecoration: 'none', color: 'Black'}} to={`${url}/myOrder`}><Button >MMy Order</Button></Link>
       <Divider />
       <Link style={{textDecoration: 'none', color: 'Black'}} to={`${url}/payment`}><Button >Payment</Button></Link>
       <Divider />
       <Link style={{textDecoration: 'none', color: 'Black'}} to={`${url}/review`}><Button >Review</Button></Link>
-      <Divider />
+      <Divider /></Box>}
+      
       <Button onClick={logout}>Logout</Button>
     </div>
   );
@@ -131,18 +135,18 @@ function Dashboard(props) {
         <Route exact path={path}>
           <h3>Please select a topic.</h3>
         </Route>
-        <Route path={`${path}/makeAdmin`}>
+        <AdminRoute path={`${path}/makeAdmin`}>
           <MakeAdmin></MakeAdmin>
-        </Route>
-        <Route path={`${path}/manageProducts`}>
+        </AdminRoute>
+        <AdminRoute path={`${path}/manageProducts`}>
           <ManageProducts></ManageProducts>
-        </Route>
-        <Route path={`${path}/manageOrder`}>
+        </AdminRoute>
+        <AdminRoute path={`${path}/manageOrder`}>
           <ManageOrder></ManageOrder>
-        </Route>
-        <Route path={`${path}/addProduct`}>
+        </AdminRoute>
+        <AdminRoute path={`${path}/addProduct`}>
           <AddProduct></AddProduct>
-        </Route>
+        </AdminRoute>
         <Route path={`${path}/review`}>
           <Review></Review>
         </Route>

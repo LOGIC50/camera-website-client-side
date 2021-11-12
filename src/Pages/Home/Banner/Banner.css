@@ -5,7 +5,7 @@
   padding: 50px 10px;
 }
 .banner-text {
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   text-align: center;
   justify-content: center;
