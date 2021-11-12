@@ -4,6 +4,7 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
+import './Banner.css'
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -14,13 +15,14 @@ const Item = styled(Paper)(({ theme }) => ({
 
 const Banner = () => {
     return (
-        <Box sx={{ flexGrow: 1 }}>
+        <Box sx={{ flexGrow: 1 }} className="box">
         <Grid container spacing={2}>
-          <Grid item xs={12} md={6}>
-            <h1>Capture Your Moment</h1>
+          <Grid item xs={12} md={6} className='banner-text'>
+            <h3>Capture Your Moment With</h3>
+            <h1>LOGIC CAMERA STORE</h1>
           </Grid>
           <Grid item xs={12} md={6}>
-            <img src="https://w7.pngwing.com/pngs/327/609/png-transparent-canon-eos-7d-camera-designer-banner-digital-data-jd-com-creative-digital-camera-ad-element-electronics-lens-camera-lens-thumbnail.png" alt="" />
+            <img style={{'width': '80%'}} src="https://www.pngkey.com/png/full/801-8013177_image-canon-5d-dslr-camera-png.png" alt="" />
           </Grid>
         </Grid>
       </Box>

@@ -1,0 +1,20 @@
+.box {
+  background-color: lightcyan;
+  margin: 1px;
+  margin-bottom: 100px;
+  padding: 50px 10px;
+}
+.banner-text {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+}
+.banner-text h1 {
+  font-size: 3.5em;
+  font-weight: 800;
+  color: darkblue;
+}
+.banner-text h3 {
+  font-weight: 400;
+}

@@ -5,6 +5,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { Container } from '@mui/material';
 import Product from '../Home/Product/Product';
+import Navbar from '../../Shared/Navbar/Navbar';
 
 const ExpolreProducts = () => {
     const [products, setProducts] = useState([]);
@@ -18,6 +19,8 @@ const ExpolreProducts = () => {
     }, []);
 
     return (
+        <>
+        <Navbar></Navbar>
         <Container maxWidth="md">
         <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
@@ -29,7 +32,7 @@ const ExpolreProducts = () => {
         
       </Grid>
     </Box>
-    </Container>
+    </Container></>
     );
 };
 

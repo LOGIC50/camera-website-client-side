@@ -4,15 +4,18 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
+import Purchase from '../../Purchase/Purchase';
+import { Link } from 'react-router-dom';
 
-const Product = (props) => {
-    const {model, img, description, price, brand, type } = props.product;
+const Product = ({product}) => {
+    const {model, img, description, price, brand, _id } = product;
     return (
-        <Card >
+        <Card  style={{'margin': '10px'}}>
       <CardActionArea>
         <CardMedia
           component="img"
-          height="140"
+          // height="140"
+         
           image={img}
           alt="green iguana"
         />
@@ -32,9 +35,7 @@ const Product = (props) => {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <a href="/purchase"><Button size="small" color="primary">
-          Buy Now
-        </Button></a>
+        <Link to={`/purchase/${_id}`}>Purchase</Link>
       </CardActions>
     </Card>
     );

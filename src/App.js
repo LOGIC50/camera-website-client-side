@@ -35,7 +35,7 @@ function App() {
           <PrivateRoute path="/exploreCamera">
            <ExpolreProducts></ExpolreProducts>
           </PrivateRoute>
-          <PrivateRoute path="/purchase">
+          <PrivateRoute path="/purchase/:productId">
           <Purchase></Purchase>
           </PrivateRoute>
           <PrivateRoute path="/dashboard">
