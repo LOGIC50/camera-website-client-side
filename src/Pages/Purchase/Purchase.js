@@ -10,7 +10,7 @@ const Purchase = () => {
   const onSubmit = data => console.log(data);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/products/${productId}`)
+    fetch(`https://murmuring-depths-55393.herokuapp.com/${productId}`)
     .then(res => res.json())
     .then(data => setProduct(data))
   }, [])
