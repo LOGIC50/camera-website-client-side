@@ -1,17 +1,22 @@
 import axios from 'axios';
-import * as React from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { useForm } from 'react-hook-form';
 import './Review.css';
+import { Alert } from '@mui/material';
 
 const Review = () => {
     const { register, handleSubmit } = useForm();
+    const [success, setSuccess] = useState(false);
         const onSubmit = data => {
             console.log(data);
               axios.post('https://murmuring-depths-55393.herokuapp.com/reviews', data)
               .then(res => {
-                  console.log(res);
+                  if(data.rating){
+                    console.log(data);
+                    setSuccess(true);
+                  }
         })
     }
     return (
@@ -30,8 +35,11 @@ const Review = () => {
             <br />
             <input type="submit" />
             </form>
+            
             </div>
+            {success && <Alert severity="success">Thanks for review us</Alert>}
         </div>
+        
         </Grid>
         <Grid item xs={12} md={6} className='add-product-image'>
           <img style={{'width': '70%'}} src="https://i.ibb.co/0ZXvwfP/review.jpg" alt="" />
