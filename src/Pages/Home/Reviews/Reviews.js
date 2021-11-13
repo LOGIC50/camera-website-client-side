@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import { Container } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 import Review from '../Review/Review';
+import './Reviews.css'
 
 const Reviews = () => {
     const [reviews, setReviews] = useState([]);
@@ -13,7 +14,10 @@ const Reviews = () => {
     .then(data => setReviews(data))
     }, []);
     return (
-        <Container maxWidth="md">
+        <Container maxWidth="md" style={{'marginBottom': '100px'}}>
+          <Typography className='reviewHeader' gutterBottom variant="h5" component="div">
+            Top Reviews from Customers
+          </Typography>
         <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
         

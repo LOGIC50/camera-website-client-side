@@ -8,7 +8,7 @@ const Navbar = () => {
     return (
         <nav class="navbar navbar-expand-lg navbar-light" style={{"background-color": "#e3f2fd"}}>
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="/home">LOGIC CAMERA STORE</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -20,14 +20,13 @@ const Navbar = () => {
         <li class="nav-item">
           <a class="nav-link" href="/exploreCamera">Explore Camera</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About Us</a>
-        </li>
         {
             user?.email ?
         <Box>
-                <a href=""><Button onClick={logout} color='inherit'>Logout</Button></a>
+                
+                <a href="/home"><Button onClick={logout} color='inherit'>Logout</Button></a>
                 <a href="/dashboard"><Button color='inherit'>Dashboard</Button></a>
+                <span>{user.displayName}</span>
 </Box>
             :
             <li class="nav-item">
@@ -35,9 +34,6 @@ const Navbar = () => {
         </li>
 
         }
-        <li class="nav-item">
-          <a class="nav-link" href="/register">Register</a>
-        </li>
       </ul>
     </div>
   </div>

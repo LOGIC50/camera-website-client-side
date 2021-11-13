@@ -1,5 +1,7 @@
 import axios from 'axios';
-import React from 'react';
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 import { useForm } from 'react-hook-form';
 import './AddProduct.css'
 
@@ -13,8 +15,11 @@ const AddProduct = () => {
         })
     }
     return (
-        <div className='add-service'>
-            <h1>Add a New Product</h1>
+        <Box sx={{ flexGrow: 1 }} style={{'width': '100%', 'margin': 'auto'}}>
+      <Grid container spacing={2}>
+        <Grid item xs={12} md={6} className="admin-form">
+        <div className='add-product'>
+            <h3 style={{'marginTop': '10px', 'color': 'brown'}}>Add a New Product</h3>
             <div className='input-portion'>
             <form onSubmit={handleSubmit(onSubmit)}>
             <input {...register("brand", { required: true} ) } Placeholder='Camera Brand' />
@@ -33,6 +38,13 @@ const AddProduct = () => {
             </form>
             </div>
         </div>
+        </Grid>
+        <Grid item xs={12} md={6} className='add-product-image'>
+          <img style={{'width': '70%'}} src="https://i.ibb.co/ggnZsGh/add-Product.png" alt="" />
+        </Grid>
+      </Grid>
+    </Box>
+        
     );
 };
 export default AddProduct;

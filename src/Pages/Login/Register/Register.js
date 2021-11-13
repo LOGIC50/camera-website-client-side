@@ -2,9 +2,7 @@ import { Alert, AlertTitle, Button, CircularProgress, Container, Grid, TextField
 import React, { useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
-// import useAuth from '../../../hooks/useAuth';
-// import useAuth from '../../../../hooks/useAuth'
-// import login from "../../../images/login.png"
+import Navbar from '../../../Shared/Navbar/Navbar';
 
 const Register = () => {
     const [loginData, setLoginData] = useState({});
@@ -32,13 +30,15 @@ const Register = () => {
     }
 
     return (
+        <>
+        <Navbar></Navbar>
         <Container>
         <Grid container spacing={2}>
         <Grid sx={{mt:8}} item xs={12} md={6}>
         <Typography variant="body1" gutterBottom>Register</Typography>
       {!isLoading && <form onSubmit={handleLoginSubmit}>
         <TextField 
-        // required
+        required
             sx={{width:'75%', m:1}}
             id="standard-basic" 
             label="Your Name"
@@ -47,7 +47,7 @@ const Register = () => {
             onBlur={handleOnBlur} 
             variant="standard" />
         <TextField 
-        // required
+        required
             sx={{width:'75%', m:1}}
             id="standard-basic" 
             label="Your Email"
@@ -56,7 +56,7 @@ const Register = () => {
             onBlur={handleOnBlur} 
             variant="standard" />
         <TextField 
-        // required
+        required
             sx={{width:'75%', m:1}}
             type="password"
             id="standard-basic" 
@@ -65,7 +65,7 @@ const Register = () => {
             onBlur={handleOnBlur} 
             variant="standard" />
         <TextField 
-        // required
+        required
             sx={{width:'75%', m:1}}
             type="password"
             id="standard-basic" 
@@ -85,6 +85,7 @@ const Register = () => {
         </Grid>
         </Grid>
     </Container>
+        </>
     );
 };
 

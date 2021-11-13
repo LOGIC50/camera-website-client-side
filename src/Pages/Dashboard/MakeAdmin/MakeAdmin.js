@@ -1,6 +1,10 @@
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 import { Alert, TextField } from '@mui/material';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import useAuth from '../../../hooks/useAuth';
+import './MakeAdmin.css';
 
 const MakeAdmin = () => {
     const [email, setEmail] = useState('');
@@ -30,20 +34,33 @@ const MakeAdmin = () => {
         e.preventDefault()
     }
     return (
+        <Box sx={{ flexGrow: 1 }} style={{'width': '80%', 'margin': 'auto'}}>
+      <Grid container spacing={2}>
+        <Grid item xs={12} md={6} className="admin-form">
         <div>
-            <h1>Make an admin</h1>
+            <h4>Add to Admin Panel</h4>
             <form onSubmit={handleAdminSubmit}>
             <TextField 
             label="Email"
-            type='email' 
+            type='email'
+            style={{'width': '90%'}} 
             onBlur={handleOnBlur}
             variant="outlined" />
-            <br />
-            <button variant='contained' 
+            {/* <br />
+            <br /> */}
+            <button variant='contained'
             type='submit'>Make Admin</button>
             </form>
+            <br />
             {success && <Alert severity="success">Make admin Successfully</Alert>}
         </div>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <img style={{'width': '100%'}} src="https://i.ibb.co/WGSPfhT/admin.jpg" alt="" />
+        </Grid>
+      </Grid>
+    </Box>
+        
     );
 };
 

@@ -10,7 +10,6 @@ import {
 // import Navbar from './Shared/Navbar/Navbar';
 import Home from './Pages/Home/Home/Home';
 // import Footer from './Pages/Home/Footer/Footer';
-import Products from './Pages/Home/Products/Products';
 import Login from './Pages/Login/Login/Login';
 import Register from './Pages/Login/Register/Register';
 import AuthProvider from './Context/AuthProvider/AuthProvider';
@@ -23,15 +22,11 @@ import ExpolreProducts from './Pages/ExploreProducts/ExpolreProducts';
 function App() {
   return (
     <div className="App">
-      <h5>This is my project</h5>
       <AuthProvider>
       <Router>
         {/* <Navbar></Navbar> */}
       <div>
         <Switch>
-          <Route path="/about">
-            {/* <About /> */}
-          </Route>
           <PrivateRoute path="/exploreCamera">
            <ExpolreProducts></ExpolreProducts>
           </PrivateRoute>

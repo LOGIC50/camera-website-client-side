@@ -1,37 +1,39 @@
 import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Button, CardActionArea, CardActions } from '@mui/material';
+import { CardActionArea, CardActions } from '@mui/material';
+import './Review.css'
+import Box from '@mui/material/Box';
+import Rating from '@mui/material/Rating';
+
 
 const Review = (props) => {
-    const {name, review, img, rating} = props.review;
+  
+    const {name, review, rating} = props.review;
     return (
-        <Card >
+        <Card className='reviewCard' style={{'height': '100%', 'margin': 'auto'}} >
       <CardActionArea>
-        <CardMedia
-          component="img"
-          height="140"
-          image={img}
-          alt="green iguana"
-        />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography gutterBottom variant="h5" component="div" style={{'color': 'brown'}}>
             {name}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" color="text.secondary" style={{'textAlign': 'justify'}}>
             {review}
-          </Typography>
-          <Typography gutterBottom variant="h5" component="div">
-            {rating}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
-          Buy Now
-        </Button>
+      <Box
+      style={{'margin': 'auto'}}
+      sx={{
+        '& > legend': { mt: 2 },
+      }}
+    >
+      <Typography component="legend">Rating</Typography>
+      <Rating name="read-only" value={rating} readOnly />
+      
+    </Box>
       </CardActions>
     </Card>
     );

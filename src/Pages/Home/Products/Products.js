@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Product from '../Product/Product';
-// import * as React from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { Container } from '@mui/material';
@@ -22,7 +21,7 @@ const [products, setProducts] = useState([]);
     return (
         <Container maxWidth="md">
         <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={2}>
+      <Grid container spacing={2} style={{'marginBottom': '100px'}}>
         
         {
                 productsSlice.map(product =><Grid item xs={12} md={4}> <Product

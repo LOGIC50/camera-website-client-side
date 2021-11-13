@@ -1,22 +1,22 @@
-.add-service {
+.review-us {
   display: flex;
   flex-direction: column;
-  box-shadow: 2px 3px #e0dddd;
-  width: 40%;
+  box-shadow: 4px 6px #c5b4b4;
+  width: 90%;
   margin: auto;
   margin-top: 50px;
   margin-bottom: 50px;
-  background-color: rgb(144, 221, 231);
+  background-color: rgb(198, 166, 207);
   /* width: 40%;
       background-color: wheat; */
 }
-.add-service input,
+.review-us input,
 textarea {
   width: 80%;
   margin: 8px;
   color: red;
 }
-.add-service button {
+.review-us button {
   margin-top: 15px;
   margin-bottom: 30px;
 }
@@ -24,9 +24,13 @@ textarea {
   margin-bottom: 30px;
   margin-top: 20px;
 }
+.review-us h2 {
+  margin-top: 10px;
+  color: rgb(13, 65, 33);
+}
 @media screen and (max-width: 480px) {
-  .add-service {
-    width: 90%;
+  .review-us {
+    width: 95%;
     margin: auto;
   }
 }

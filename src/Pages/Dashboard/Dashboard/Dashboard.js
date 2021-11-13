@@ -11,16 +11,13 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { Button} from '@mui/material';
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
   Link,
-  useParams,
   useRouteMatch
 } from "react-router-dom";
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import ManageProducts from '../ManageProducts/ManageProducts';
-import ManageOrder from '../ManageOrder/ManageOrder';
 import AddProduct from '../AddProduct/AddProduct';
 import Review from '../Review/Review';
 import Payment from '../Payment/Payment';
@@ -51,11 +48,9 @@ function Dashboard(props) {
       <Link style={{textDecoration: 'none', color: 'Black'}} to={`${url}/manageProducts`}><Button >Manage Products</Button></Link>
       <Divider />
       <Link style={{textDecoration: 'none', color: 'Black'}} to={`${url}/addProduct`}><Button >Add Product</Button></Link>
-      <Divider />
-      <Link style={{textDecoration: 'none', color: 'Black'}} to={`${url}/manageOrder`}><Button >Manage Order</Button></Link>
       <Divider /></Box> ||
       <Box>
-        <Link style={{textDecoration: 'none', color: 'Black'}} to={`${url}/myOrder`}><Button >MMy Order</Button></Link>
+        <Link style={{textDecoration: 'none', color: 'Black'}} to={`${url}/myOrder`}><Button >My Order</Button></Link>
       <Divider />
       <Link style={{textDecoration: 'none', color: 'Black'}} to={`${url}/payment`}><Button >Payment</Button></Link>
       <Divider />
@@ -103,7 +98,6 @@ function Dashboard(props) {
           container={container}
           variant="temporary"
           open={mobileOpen}
-          // style={{'backgroundColor': 'lightblue'}}
           onClose={handleDrawerToggle}
           ModalProps={{
             keepMounted: true, // Better open performance on mobile.
@@ -133,16 +127,14 @@ function Dashboard(props) {
         <Toolbar />
         <Switch>
         <Route exact path={path}>
-          <h3>Please select a topic.</h3>
+          <h2>Welcome to Logic Camera Store's Dashboard</h2>
+
         </Route>
         <AdminRoute path={`${path}/makeAdmin`}>
           <MakeAdmin></MakeAdmin>
         </AdminRoute>
         <AdminRoute path={`${path}/manageProducts`}>
           <ManageProducts></ManageProducts>
-        </AdminRoute>
-        <AdminRoute path={`${path}/manageOrder`}>
-          <ManageOrder></ManageOrder>
         </AdminRoute>
         <AdminRoute path={`${path}/addProduct`}>
           <AddProduct></AddProduct>

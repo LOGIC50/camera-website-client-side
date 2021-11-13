@@ -1,22 +1,21 @@
-.add-service {
+.add-product {
   display: flex;
   flex-direction: column;
   box-shadow: 2px 3px #e0dddd;
-  width: 40%;
+  width: 90%;
   margin: auto;
   margin-top: 50px;
   margin-bottom: 50px;
-  background-color: rgb(144, 221, 231);
-  /* width: 40%;
-    background-color: wheat; */
+  background-color: rgb(187, 224, 223);
 }
-.add-service input,
+.add-product input,
 textarea {
   width: 80%;
   margin: 8px;
-  color: red;
+  background-color: rgba(250, 250, 247, 0.897);
+  border-radius: 5px;
 }
-.add-service button {
+.add-product button {
   margin-top: 15px;
   margin-bottom: 30px;
 }
@@ -24,9 +23,14 @@ textarea {
   margin-bottom: 30px;
   margin-top: 20px;
 }
+.add-product-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 @media screen and (max-width: 480px) {
-  .add-service {
-    width: 90%;
+  .add-product {
+    width: 100%;
     margin: auto;
   }
 }
