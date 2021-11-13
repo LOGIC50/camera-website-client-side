@@ -4,9 +4,12 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { useForm } from 'react-hook-form';
 import './AddProduct.css'
+import useAuth from '../../../hooks/useAuth';
+import { Alert, CircularProgress } from '@mui/material';
 
 const AddProduct = () => {
-    const { register, handleSubmit, reset } = useForm();
+  const {isLoading} = useAuth();
+    const { register, handleSubmit } = useForm();
         const onSubmit = data => {
             console.log(data);
               axios.post('https://murmuring-depths-55393.herokuapp.com/products', data)
@@ -37,6 +40,7 @@ const AddProduct = () => {
             <input type="submit" />
             </form>
             </div>
+            
         </div>
         </Grid>
         <Grid item xs={12} md={6} className='add-product-image'>
@@ -48,3 +52,8 @@ const AddProduct = () => {
     );
 };
 export default AddProduct;
+
+
+
+
+

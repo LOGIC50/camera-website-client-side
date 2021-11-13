@@ -26,7 +26,7 @@ const Review = () => {
             <br />
             <textarea {...register("review")} Placeholder='Your review in word'/>
             <br />
-            <input type="number" {...register("raing")} Placeholder='Rate us out of 5'/>
+            <input type="number" {...register("rating")} Placeholder='Rate us out of 5'/>
             <br />
             <input type="submit" />
             </form>
