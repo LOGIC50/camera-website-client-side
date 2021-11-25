@@ -9,7 +9,7 @@ const Footer = () => {
   <div className="row row-cols-1 row-cols-sm-2 row-cols-md-4">
     <div className="col text-center">
         <h3>LOGIC <span className='text-danger'>Camera Store</span></h3>
-        <p>The new hero pieces bring instant fashion credibility. Bright florals clash with camouflage prints.</p>
+        <p>The new hero pieces bring fashion credibility. Bright florals clash with camouflage prints.</p>
         <p> As dedicated tourism specialists, our focus has allowed us to develop the best possible website features for tour and activity businesses</p>
     </div>
     <div className="col link">
