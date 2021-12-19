@@ -1,43 +1,70 @@
-import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import {  CardActionArea, CardActions } from '@mui/material';
-import { Link } from 'react-router-dom';
+import * as React from "react";
+import { Link } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import "./Product.css";
 
-const Product = ({product}) => {
-    const {model, img, description, price, brand, _id } = product;
-    return (
-        <Card  style={{'margin': '10px', 'height': '100%', 'display': 'flex', 'flexDirection': 'column'}}>
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          // height="200"
-        
-          image={img}
-          alt="green iguana"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div" style={{'color': 'lightCoral','fontWeight': '300', 'textAlign': 'right', 'fontSize': '18px'}}>
-            {brand}
-          </Typography>
-          <Typography gutterBottom variant="h5" component="div" style={{'color': 'blue','fontWeight': '400'}}>
-            {model}
-          </Typography>
-          <Typography variant="body2" color="text.secondary" style={{'textAlign': 'justify','fontWeight': '300'}}>
-            {description}
-          </Typography>
-          <Typography gutterBottom variant="h5" component="div" style={{'color': 'darkBlue','fontWeight': '400', 'textAlign': 'left', 'fontSize': '18px', 'marginTop': '5px'}}>
-            Price: {price}$
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions >
-        <Link style={{'alignItems': 'center', 'textDecoration': 'none', 'backgroundColor': 'lightBlue', 'margin': 'auto', 'padding': '5px 20px', 'borderRadius': '5px', 'color': 'darkblue'}} to={`/purchase/${_id}`}>Purchase</Link>
-      </CardActions>
-    </Card>
-    );
+const Product = ({ product }) => {
+  const { model, img, description, price, brand, _id } = product;
+  React.useEffect(() => {
+    AOS.init();
+  });
+  return (
+    <div
+      className="product-card"
+      style={{
+        margin: "10px",
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        boxShadow:
+          "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px",
+        padding: "10px",
+        borderRadius: "5px",
+      }}
+      data-aos="zoom-in"
+      data-aos-duration="2000"
+    >
+      <div>
+        <img style={{ width: "100%", borderRadius: "3%" }} src={img} alt="" />
+      </div>
+      <div>
+        <p style={{ textAlign: "right", fontWeight: "600" }}>{brand}</p>
+      </div>
+      <div>
+        <h4 style={{ color: "blue", fontWeight: "500" }}>{model}</h4>
+      </div>
+      <div>
+        <p
+          style={{
+            fontWeight: "300",
+            textAlign: "justify",
+            marginBottom: "5px",
+          }}
+        >
+          {description}
+        </p>
+      </div>
+      <div>
+        <h5 style={{ textAlign: "left", marginBottom: "20px" }}>
+          Price: {price}$
+        </h5>
+      </div>
+      <div>
+        <Link
+          style={{
+            alignItems: "center",
+          }}
+          to={`/purchase/${_id}`}
+        >
+          <button class="button-70" role="button">
+            Purchase
+          </button>
+        </Link>
+      </div>
+    </div>
+  );
 };
 
 export default Product;

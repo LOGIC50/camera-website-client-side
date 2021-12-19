@@ -1,57 +1,114 @@
-import React, { useEffect, useState } from 'react';
-import { styled } from '@mui/material/styles';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell, { tableCellClasses } from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import useAuth from '../../../hooks/useAuth';
-
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white,
-  },
-  [`&.${tableCellClasses.body}`]: {
-    fontSize: 14,
-  },
-}));
+import {
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import useAuth from "../../../hooks/useAuth";
+import "./MyOrder.css";
 
 const MyOrder = () => {
-  const {user} = useAuth();
+  const { user } = useAuth();
+  const [orders, setOrders] = useState([]);
 
-    useEffect(() => {
-      const url = `https://murmuring-depths-55393.herokuapp.com/order?id=${user.email}`;
-        fetch(url)
-        .then(res => res.json())
-    }, [])
-    return (
-        <div>
-            <h1>Here is My Order</h1>
-            <TableContainer className='products-table' style={{'width': '90%', 'margin': 'auto'}} component={Paper}>
-      <Table  aria-label="customized table">
-        <TableHead>
-          <TableRow>
-            <StyledTableCell>Product Name</StyledTableCell>
-            <StyledTableCell align="right">manage</StyledTableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {/* {products.map((product) => (
-            <StyledTableRow key={product._id}>
-              <StyledTableCell component="th" scope="row">
-                {product.model}
-              </StyledTableCell>
-              <StyledTableCell align="right"><button onClick={() => handleDelete(product._id)}>Delete</button></StyledTableCell>
-            </StyledTableRow>
-          ))} */}
-        </TableBody>
-      </Table>
-    </TableContainer>
-        </div>
-    );
+  useEffect(() => {
+    const url = `https://murmuring-depths-55393.herokuapp.com/order?email=${user.email}`;
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => setOrders(data));
+  }, []);
+  const handleDelete = (id) => {
+    const url = `https://murmuring-depths-55393.herokuapp.com/order/${id}`;
+    fetch(url, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.deletedCount) {
+          alert("Successfully Delated");
+          const remaining = orders.filter((order) => order._id !== id);
+          setOrders(remaining);
+        }
+      });
+  };
+
+  return (
+    <div className="container" id="myOrder" style={{ marginTop: "50px" }}>
+      <hr />
+      <p
+        style={{
+          textAlign: "left",
+          fontSize: "1.2rem",
+          color: "blue",
+          marginBottom: "0px",
+        }}
+      >
+        Customer's Name: {user.displayName}
+      </p>
+      <p style={{ textAlign: "left", fontSize: "1.2rem", color: "blue" }}>
+        Customer's Email: {user.email}
+      </p>
+      <hr />
+      <br />
+      <h2 style={{ marginBottom: "30px" }}>My Orders List</h2>
+      <TableContainer component={Paper}>
+        <Table sx={{}} aria-label="Appointments table">
+          <TableHead>
+            <TableRow>
+              <TableCell style={{ fontSize: "1.2rem" }}>
+                Products Name
+              </TableCell>
+              <TableCell style={{ fontSize: "1.2rem" }} align="center">
+                Price
+              </TableCell>
+              <TableCell style={{ fontSize: "1.2rem" }} align="right">
+                Purchase
+              </TableCell>
+              <TableCell style={{ fontSize: "1.2rem" }} align="right">
+                Cancel
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {orders.map((row) => (
+              <TableRow
+                key={row._id}
+                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              >
+                <TableCell component="th" scope="row">
+                  {row.productsName}
+                </TableCell>
+                <TableCell align="center">{row.price} $</TableCell>
+                <TableCell align="right">
+                  {row.payment ? (
+                    "Paid"
+                  ) : (
+                    <Link to={`/dashboard/payment/${row._id}`}>
+                      <button className="button-33">Pay</button>
+                    </Link>
+                  )}
+                </TableCell>
+                <TableCell align="right">
+                  <button
+                    className="button-34"
+                    onClick={() => handleDelete(row._id)}
+                  >
+                    Delete
+                  </button>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </div>
+  );
 };
 
 export default MyOrder;

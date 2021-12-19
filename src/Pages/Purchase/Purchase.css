@@ -1,0 +1,19 @@
+#purchase-div {
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px,
+    rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+  padding: 30px;
+}
+@media screen and (max-width: 800px) {
+  #purchase-div {
+    padding: 5px;
+  }
+}
+#purchase-form {
+  display: flex;
+  flex-direction: column;
+}
+#purchase-form input {
+  margin: 5px 0px;
+}

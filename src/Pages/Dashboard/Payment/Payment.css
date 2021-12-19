@@ -1,0 +1,17 @@
+.payment-card {
+  width: 50%;
+  margin: auto;
+  margin-top: 50px;
+}
+
+@media only screen and (max-width: 800px) {
+  .payment-card {
+    width: 95%;
+    margin: auto;
+  }
+}
+.payment-card p {
+  text-align: left;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
